@@ -1593,3 +1593,577 @@ body {
     width: 100%;
   }
 }
+
+/* --- KOMPYUTER VERSIYASI --- */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  border-bottom: 1px solid #FFE5E0;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.top-right-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Kompyuterda menyu linklari doim ko'rinishi uchun */
+.nav-container {
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #A10207;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+}
+
+/* Hover chizig'i */
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #FF4C71;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+/* --- RESPONSIVE (MOBIL) --- */
+@media (max-width: 992px) {
+  .burger-menu {
+    display: flex;
+  }
+
+  /* Mobil menyu oynasi */
+  .nav-container {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Berkitilgan */
+    width: 300px;
+    height: 100vh;
+    background: #ffffff;
+    transition: 0.4s ease-in-out;
+    padding-top: 100px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  }
+
+  .nav-container.active {
+    right: 0; /* Ochilgan */
+  }
+
+  .nav-menu {
+    flex-direction: column; /* Linklar ustma-ust */
+    align-items: center;
+    gap: 30px;
+  }
+}
+
+/* --- MODAL STILLARI --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* --- MODAL DIZAYNI --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+  border-radius: 30px;
+  position: relative;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  animation: modalSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 40px;
+  color: #A10207;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-title { color: #A10207; font-weight: 900; margin-bottom: 5px; text-align: center; }
+.modal-subtitle { text-align: center; font-size: 14px; color: #666; margin-bottom: 30px; }
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-size: 12px; font-weight: 800; color: #333; margin-bottom: 8px; text-transform: uppercase; }
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 13px 18px;
+  border: 2px solid #FFE5E0;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: #FF4C71;
+}
+
+.btn-modal-submit {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #A10207 0%, #FF4C71 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 10px 20px rgba(161, 2, 7, 0.2);
+}
+
+/* --- RESPONSIVE VA HOVER --- */
+@media (max-width: 992px) {
+  .nav-container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    display: block !important;
+    transition: 0.4s ease-in-out;
+    padding-top: 100px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  }
+  .nav-container.active { right: 0; }
+  .nav-menu { flex-direction: column !important; align-items: center; gap: 25px !important; }
+}
+
+.nav-menu li a {
+  position: relative;
+  text-decoration: none;
+  color: #A10207;
+  font-weight: 700;
+}
+
+.nav-menu li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #FF4C71;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+/* Ma'lumot ko'rinishi uchun (Yo'riqnoma va Dorixona) */
+.modal-info-view {
+  text-align: left;
+}
+
+.instruction-body p {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.pharmacy-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pharmacy-list li {
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid #A10207;
+  font-size: 14px;
+}
+
+/* Modal ichidagi scroll (agar matn ko'p bo'lsa) */
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* --- MODAL OVERLAY --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+/* --- STYLISH MODAL CONTENT --- */
+.stylish-modal {
+  background: #fff;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  border-radius: 24px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: modalScale 0.3s ease-out;
+}
+
+@keyframes modalScale {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f0f0f0;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-close:hover { background: #e0e0e0; transform: rotate(90deg); }
+
+/* --- BUY FORM STYLES --- */
+.modal-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.modal-desc {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: 0.3s;
+  outline: none;
+  background: #fafafa;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-color: #00bdf2;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 189, 242, 0.1);
+}
+
+.btn-submit-premium {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #00bdf2 0%, #0088cc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 189, 242, 0.3);
+  margin-top: 10px;
+}
+
+.btn-submit-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0, 189, 242, 0.4);
+}
+
+/* --- PHARMACY GRID --- */
+.pharmacy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.ph-item {
+  background: #f8f9fa;
+  padding: 15px;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: 600;
+  border: 1px solid #eee;
+}
+
+/* 1. Animatsiya qoidasini yaratamiz */
+@keyframes softPulse {
+  0% {
+    transform: scale(1); /* Oddiy holat */
+  }
+  50% {
+    transform: scale(1.05); /* 5% ga kattalashadi */
+  }
+  100% {
+    transform: scale(1); /* Yana joyiga qaytadi */
+  }
+}
+
+/* 2. Rasmlarga animatsiyani bog'laymiz */
+.box-image, .usage-image img, .composition-image img {
+  transition: transform 0.4s ease; /* Hover bo'lganda silliq to'xtashi uchun */
+  animation: softPulse 3s ease-in-out infinite; /* 3 soniyada bir takrorlanadi */
+  cursor: pointer;
+}
+
+/* 3. Hover bo'lganda animatsiyani to'xtatamiz va biroz ko'taramiz */
+.box-image:hover, .usage-image img:hover, .composition-image img:hover {
+  animation-play-state: paused; /* Animatsiya to'xtaydi */
+  transform: scale(1.08); /* Hoverda biroz kattaroq holatda qotadi */
+}
+/* 1. Aylanish animatsiyasini yaratamiz */
+@keyframes slowRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 2. To'q sariq doiraga animatsiyani bog'laymiz */
+.orange-circle {
+  /* Transition hoverda silliq to'xtashi va joyiga qaytishi uchun */
+  transition: all 0.5s ease-out; 
+  
+  /* Animatsiya: 10 soniyada bir marta aylanadi, to'xtovsiz (infinite) */
+  animation: slowRotate 10s linear infinite;
+  
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* 3. Doira ichidagi matnlar teskari aylanib, doim to'g'ri turishi uchun */
+.orange-circle span {
+  display: inline-block;
+  /* Agar matn ham qo'shilib aylanib ketsa, o'qish qiyin bo'ladi. 
+     Shuning uchun matnni qimirlatmaymiz yoki quyidagi usulni qo'llaymiz: */
+}
+
+/* 4. Hover bo'lganda animatsiyani to'xtatish va effekt berish */
+.orange-circle:hover {
+  animation-play-state: paused; /* Aylanishni to'xtatadi */
+  transform: scale(1.15) rotate(0deg); /* Biroz kattalashadi va tekis bo'lib qoladi */
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.5); /* Atrofi nur sochadi */
+}
+/* Umumiy oq konteyner */
+.features-white-card {
+  display: flex;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  height: 160px; /* Balandlik o'zgarmas qoladi */
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  width: 100%;
+}
+
+/* Har bir qism (ustun) */
+.feature-item {
+  flex: 1; /* Dastlab hamma teng */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Chapga tekislash */
+  padding: 0 35px;
+  height: 100%;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Silliq harakat */
+  cursor: pointer;
+}
+
+/* Ajratuvchi chiziqlar */
+.divider {
+  width: 1px;
+  height: 70px;
+  background-color: #eee;
+  flex-shrink: 0; /* Chiziq qisqarib ketmasligi uchun */
+}
+
+/* Ikonka doirasi */
+.feature-icon-circle {
+  width: 12px;
+  height: 12px;
+  background-color: #00bdf2;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Matn stili */
+.feature-text {
+  margin: 0 0 0 20px; /* Chapdan ikonka bilan masofa */
+  font-size: 15px;
+  color: #444;
+  line-height: 1.4;
+  text-align: left; /* Matn chapdan o'ngga */
+  transition: all 0.5s ease;
+}
+
+/* --- HOVER EFFEKTLARI (FAQAT CSS) --- */
+
+/* 1. Ustiga borganda blok kengayadi */
+.features-white-card:hover .feature-item:hover {
+  flex: 1.7; 
+  background-color: #fafafa;
+}
+
+/* 2. Ustiga borganda matn kattalashadi */
+.feature-item:hover .feature-text {
+  font-size: 19px;
+  color: #000;
+}
+
+/* 3. Boshqa bloklar (hover bo'lmaganlar) qisqaradi va matni kichrayadi */
+.features-white-card:hover .feature-item:not(:hover) {
+  flex: 0.6;
+  opacity: 0.5;
+}
+
+.features-white-card:hover .feature-item:not(:hover) .feature-text {
+  font-size: 12px;
+}
+
+/* --- RESPONSIV (MOBIL) --- */
+@media (max-width: 992px) {
+  .features-white-card {
+    flex-direction: column;
+    height: auto;
+  }
+  .feature-item {
+    width: 100%;
+    padding: 25px;
+    border-bottom: 1px solid #eee;
+  }
+  .divider {
+    display: none; /* Mobilda vertikal chiziq shart emas */
+  }
+  /* Mobilda hover effektini o'chiramiz (noqulaylik tug'dirmasligi uchun) */
+  .features-white-card:hover .feature-item:hover,
+  .features-white-card:hover .feature-item:not(:hover) {
+    flex: 1;
+    opacity: 1;
+  }
+  .feature-item:hover .feature-text,
+  .features-white-card:hover .feature-item:not(:hover) .feature-text {
+    font-size: 15px;
+  }
+}

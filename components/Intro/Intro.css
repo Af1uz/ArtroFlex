@@ -134,102 +134,182 @@
   .section-main-title { font-size: 28px; }
   .btn-footer-center { text-align: center; }
 }
-/* Footer Asosiy Stili */
-.footer-section {
-  background-color: #ffffff;
-  padding: 60px 0 40px;
-  font-family: 'Segoe UI', sans-serif;
-  border-top: 1px solid #eef2f6;
+/* Maqolalar bloki umumiy stili */
+.articles-block {
+  padding: 50px 0;
 }
 
-/* Ogohlantirish matni (1-ga-1) */
-.warning-banner {
-  border-bottom: 2px solid #00bdf2;
-  margin-bottom: 40px;
-  padding-bottom: 15px;
-  text-align: center;
+/* Kartalar konteyneri */
+.article-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start; /* Kartalar tepadan tekislanadi */
+  min-height: 480px; /* Balandlik o'zgarganda pastdagi elementlar qimirlamasligi uchun */
+  transition: all 0.5s ease;
 }
 
-.warning-banner h2 {
+/* Har bir karta */
+.article-card {
+  flex: 1;
+  height: 380px; /* Standart balandlik */
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Elementlarni ustma-ust taxlaydi */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover effekti: Eni kalta, bo'yi uzun */
+.article-cards:hover .article-card:hover {
+  flex: 0.85; /* Eni biroz qisqaradi */
+  height: 450px; /* Bo'yi uzunlashadi */
+  box-shadow: 0 20px 40px rgba(0, 189, 242, 0.15);
+}
+
+/* Qolgan kartalarni kichraytirish */
+.article-cards:hover .article-card:not(:hover) {
+  transform: scale(0.95);
+  opacity: 0.7;
+}
+
+/* Rasm qismi */
+.article-img-wrapper {
+  width: 100%;
+  height: 220px; /* Rasm balandligi o'zgarmas qoladi */
+  flex-shrink: 0; /* Rasm qisqarib ketmasligi uchun */
+  overflow: hidden;
+}
+
+.article-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* --- MATN QISMI (BUZILGAN JOYI SHU YERDA EDI) --- */
+.article-footer {
+  padding: 20px;
+  flex-grow: 1; /* Qolgan bo'sh joyni to'liq egallaydi */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Matn tepada, tugma pastda turadi */
+  background: #fff;
+}
+
+.article-footer p {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+  /* Matn ko'p bo'lsa 3 qatordan keyin nuqta qo'yadi */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tugma qismi */
+.rotating-arrow {
+  align-self: flex-end; /* Tugmani o'ng pastki burchakka taqaydi */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #00bdf2;
+  background: transparent;
   color: #00bdf2;
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
-/* Manbalar ro'yxati */
-.sources-title {
-  color: #1a56a0;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
+.article-card:hover .rotating-arrow {
+  background: #00bdf2;
+  color: #fff;
+  transform: rotate(-45deg);
 }
 
-.sources-list {
-  padding-left: 20px;
-  margin-bottom: 60px;
+.rotating-arrow svg {
+  width: 20px;
+  height: 20px;
 }
 
-.sources-list li {
-  color: #6a8095;
-  font-size: 13px;
-  line-height: 1.6;
-  margin-bottom: 8px;
-}
-
-/* Footer Pastki Qism Grid */
+/* Footer qismini tartibga solish */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* Mobil versiyada buzilmasligi uchun */
+  gap: 30px;
 }
 
-/* Logo (CSS orqali) */
-.brand-artro { color: #00bdf2; font-size: 48px; font-weight: 900; font-style: italic; }
-.brand-flex { color: #1a56a0; font-size: 48px; font-weight: 900; font-style: italic; }
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-width: 300px;
+}
 
+/* Sotib olish va Yo'riqnoma tugmalari stili */
 .footer-actions {
   display: flex;
   gap: 15px;
-  margin-top: 25px;
+  flex-wrap: wrap;
 }
 
-/* Tugmalar Hover bilan */
-.btn-buy-now {
-  background: #00bdf2;
-  color: white;
-  border: none;
-  padding: 12px 30px;
+.btn-buy-now, .btn-leaflet {
+  padding: 12px 25px;
   border-radius: 50px;
   font-weight: 700;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  border: none;
+}
+
+.btn-buy-now {
+  background-color: #ff6b00; /* To'q sariq rang */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
 }
 
 .btn-buy-now:hover {
-  background: #1a56a0;
-  box-shadow: 0 5px 15px rgba(0, 189, 242, 0.4);
+  background-color: #e66000;
+  transform: translateY(-2px);
 }
 
 .btn-leaflet {
-  background: transparent;
+  background-color: transparent;
   color: #00bdf2;
   border: 2px solid #00bdf2;
-  padding: 10px 30px;
-  border-radius: 50px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
 .btn-leaflet:hover {
-  background: #00bdf2;
-  color: white;
+  background-color: #00bdf2;
+  color: #fff;
 }
 
-/* Navigatsiya */
+/* O'ng tarafdagi navigatsiya menyusi */
+.footer-right {
+  flex: 1;
+  min-width: 300px;
+}
+
 .footer-nav {
   display: flex;
+  justify-content: flex-end;
   gap: 40px;
 }
 
@@ -240,10 +320,9 @@
 }
 
 .nav-column a {
-  color: #1a56a0;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
+  color: #555;
+  font-size: 14px;
   transition: color 0.2s;
 }
 
@@ -251,37 +330,466 @@
   color: #00bdf2;
 }
 
-/* --- RESPONSIVE --- */
+/* Ma'lumot manbalari ro'yxatini to'g'irlash */
+.sources-list {
+  font-size: 12px;
+  color: #777;
+  line-height: 1.8;
+  padding-left: 20px;
+}
 
+/* Ogohlantirish banneri */
+.warning-banner {
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 30px;
+}
+
+.warning-banner h2 {
+  font-size: 24px;
+  color: #ccc;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* --- MODAL STYLES --- */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.modal-inner {
+  background: #fff;
+  padding: 40px;
+  border-radius: 24px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.close-x {
+  position: absolute;
+  top: 15px; right: 20px;
+  background: none; border: none; font-size: 30px; cursor: pointer; color: #999;
+}
+
+/* --- ARTICLES HOVER EFFECT (Uzun va Kalta) --- */
+.article-cards {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  min-height: 500px;
+  transition: all 0.5s ease;
+}
+.article-card {
+  flex: 1;
+  height: 380px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.article-cards:hover .article-card:hover {
+  flex: 0.8; /* Kalta */
+  height: 460px; /* Uzun */
+}
+.article-cards:hover .article-card:not(:hover) {
+  transform: scale(0.92);
+  opacity: 0.6;
+}
+.article-img-wrapper { height: 200px; flex-shrink: 0; overflow: hidden; }
+.article-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.article-footer {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- FOOTER / SOTIB OLISH QISMI TUZATILDI --- */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 0;
+  border-top: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  flex: 1;
+}
+.footer-brand {
+  font-size: 32px;
+  font-weight: 800;
+}
+.brand-artro { color: #00bdf2; }
+.brand-flex { color: #333; }
+
+.footer-actions {
+  display: flex;
+  gap: 15px;
+}
+.btn-buy-now {
+  background: #ff6b00;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255,107,0,0.3);
+  transition: 0.3s;
+}
+.btn-buy-now:hover { background: #e66000; transform: translateY(-2px); }
+
+.btn-leaflet {
+  background: transparent;
+  color: #00bdf2;
+  border: 2px solid #00bdf2;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-leaflet:hover { background: #00bdf2; color: #fff; }
+
+.footer-right { flex: 1; }
+.footer-nav { display: flex; justify-content: flex-end; gap: 40px; }
+.nav-column { display: flex; flex-direction: column; gap: 10px; }
+.nav-column a { text-decoration: none; color: #666; font-size: 14px; transition: 0.2s; }
+.nav-column a:hover { color: #00bdf2; }
+
+/* Ma'lumot manbalari */
+.sources-block { margin: 40px 0; border-top: 1px solid #f0f0f0; padding-top: 20px; }
+.sources-list { font-size: 12px; color: #888; line-height: 1.6; padding-left: 20px; }
+
+/* --- MODAL YOPISH TUGMASI (PASTKI TUGMA) --- */
+.modal-btn-close {
+  margin-top: 25px;
+  padding: 12px 40px;
+  background: linear-gradient(135deg, #00bdf2 0%, #0088cc 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 189, 242, 0.3);
+  outline: none;
+}
+
+.modal-btn-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 189, 242, 0.4);
+  filter: brightness(1.1);
+}
+
+.modal-btn-close:active {
+  transform: translateY(0);
+}
+
+/* --- MODALNING "×" TUGMASI (TEPADAGI BELGI) --- */
+.close-x {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  background: #f4f7f9;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #666;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding-bottom: 4px; /* X belgisini markazlashtirish uchun */
+}
+
+.close-x:hover {
+  background: #ff4d4d;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* --- MODAL MATNLARI UCHUN QO'SHIMCHA --- */
+.modal-h2 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+.modal-p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.7;
+  padding: 0 15px;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Planhet va telefonlar uchun (992px dan kichik ekranlar) */
 @media (max-width: 992px) {
-  .footer-bottom {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .article-cards {
+    flex-direction: column; /* Kartalarni ustma-ust qiladi */
+    align-items: center;    /* Markazga tekislaydi */
+    gap: 30px;              /* Kartalar orasidagi masofa */
+    min-height: auto;       /* Balandlikni cheklamaymiz */
   }
-  
-  .footer-nav {
-    margin-top: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
+
+  .article-card {
+    width: 100%;            /* Karta eni to'liq bo'ladi */
+    max-width: 400px;       /* Juda kengayib ketmasligi uchun */
+    height: 400px;          /* Mobil uchun qulay balandlik */
   }
-  
-  .warning-banner h2 {
-    font-size: 28px;
+
+  /* Mobil qurilmalarda hover effekti boshqacha bo'lishi kerak */
+  .article-cards:hover .article-card {
+    transform: none;        /* Barcha kartalar kichrayishini to'xtatamiz */
+    opacity: 1;
+    filter: none;
+  }
+
+  .article-cards:hover .article-card:hover {
+    flex: none;             /* Eni qisqarmaydi */
+    height: 450px;          /* Faqat bo'yi biroz uzunlashadi */
+    transform: translateY(-10px); /* Yuqoriga biroz ko'tariladi */
   }
 }
 
-@media (max-width: 480px) {
+/* Kichik telefonlar uchun (576px dan kichik) */
+@media (max-width: 576px) {
+  .section-main-title {
+    font-size: 24px;        /* Sarlavha kichrayadi */
+    padding: 0 15px;
+  }
+
+  .article-card {
+    height: 380px;
+  }
+
+  .footer-nav {
+    justify-content: center; /* Menyular markazga */
+    gap: 20px;
+    text-align: center;
+  }
+
   .footer-actions {
+    justify-content: center; /* Tugmalar markazga */
+  }
+}
+/* Maqolalar bloki */
+.articles-block {
+  padding: 50px 0;
+}
+
+/* Konteyner - endi bu yerda min-height yo'q, oq joy qolmaydi */
+.article-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch; /* Kartalar bo'yi bir xil bo'ladi */
+  transition: all 0.5s ease;
+}
+
+/* Har bir karta */
+.article-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* Rasm qismi */
+.article-img-wrapper {
+  width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.article-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Matn qismi */
+.article-footer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  transition: all 0.4s ease;
+}
+
+/* Sarlavha (Har doim ko'rinib turadi) */
+.article-footer p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.4;
+  /* Dastlab matnning faqat sarlavha qismi ko'rinadi */
+  max-height: 45px; 
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+/* --- HOVER EFFEKTI --- */
+
+/* Hover bo'lganda: Eni kalta, ichidagi matn to'liq ochiladi */
+.article-cards:hover .article-card:hover {
+  flex: 0.8; 
+  box-shadow: 0 15px 35px rgba(0, 189, 242, 0.2);
+}
+
+.article-card:hover .article-footer p {
+  max-height: 200px; /* Matn to'liq ochiladi */
+  color: #00bdf2;    /* Rang o'zgaradi */
+}
+
+/* Qolgan kartalar biroz xiralashadi */
+.article-cards:hover .article-card:not(:hover) {
+  opacity: 0.6;
+  transform: scale(0.96);
+}
+
+/* Tugma stili */
+.rotating-arrow {
+  align-self: flex-end;
+  margin-top: 15px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1.5px solid #00bdf2;
+  background: transparent;
+  color: #00bdf2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.article-card:hover .rotating-arrow {
+  background: #00bdf2;
+  color: #fff;
+  transform: rotate(-45deg);
+}
+
+/* RESPONSIVE (Tagma-tag bo'lishi) */
+@media (max-width: 992px) {
+  .article-cards {
     flex-direction: column;
+    align-items: center;
+  }
+  .article-card {
     width: 100%;
+    max-width: 450px;
+    height: auto; /* Bo'yi matnga qarab moslashadi */
   }
-  
-  .btn-buy-now, .btn-leaflet {
-    width: 100%;
-  }
-  
-  .brand-artro, .brand-flex {
-    font-size: 36px;
-  }
+}
+
+.article-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  transition: all 0.5s ease;
+  min-height: 420px; /* Umumiy joy saqlanadi */
+}
+
+.article-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 380px; /* Standart bo'y */
+}
+
+/* --- HOVER HOLATI: WIDTH KATTALASHADI --- */
+.article-cards:hover .article-card:hover {
+  flex: 1.8; /* Karta eniga kattalashadi */
+  box-shadow: 0 15px 35px rgba(0, 189, 242, 0.15);
+}
+
+/* Boshqa cardlar kichrayishi */
+.article-cards:hover .article-card:not(:hover) {
+  flex: 0.6;
+  opacity: 0.6;
+}
+
+.article-img-wrapper { height: 200px; flex-shrink: 0; }
+.article-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+.article-footer {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.art-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* --- DESC MATNI: BOSHLANG'ICHDA YASHIRILGAN --- */
+.art-desc {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin-top: 10px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* HOVER BO'LGANDA MATN CHIQADI */
+.article-card:hover .art-desc {
+  opacity: 1;
+  max-height: 150px; /* Bo'shliqni to'ldiradi */
+}
+
+/* RESPONSIVE: MOBILDA TAGMA-TAG */
+@media (max-width: 992px) {
+  .article-cards { flex-direction: column; align-items: center; }
+  .article-card { width: 100%; max-width: 450px; height: auto; }
+  .article-cards:hover .article-card:hover { flex: none; width: 100%; }
 }
