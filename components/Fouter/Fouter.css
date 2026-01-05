@@ -1,0 +1,95 @@
+.bottom-footer-legal {
+  background-color: #1a3a5a; /* To'q ko'k rasmdegidek */
+  padding: 40px 0;
+  color: #ffffff;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+.footer-legal-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Logotip qismi */
+.sun-pharma-logo {
+  flex-shrink: 0;
+  width: 150px;
+}
+
+.sun-logo-svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Matnli qism */
+.legal-info-text {
+  flex: 2;
+  font-size: 13px;
+  color: #d1d9e0; /* Bir oz ochroq oq matn */
+}
+
+.legal-info-text p {
+  margin-bottom: 15px;
+}
+
+.sogr-number {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Linklar qismi */
+.legal-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: right;
+}
+
+.legal-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.legal-links a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* --- RESPONSIVE --- */
+
+@media (max-width: 992px) {
+  .footer-legal-wrapper {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .legal-links {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    width: 100%;
+  }
+
+  .legal-info-text {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottom-footer-legal {
+    padding: 30px 15px;
+  }
+  
+  .sun-pharma-logo {
+    width: 120px;
+  }
+}
+
